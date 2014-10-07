@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Results Prototype</title>
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/tweaks.css" />
+  <script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+  <div class="row">
+    <div class="large-12 columns">
+      <form class="search-form"><input class="search-terms"><input type="submit"></form>
+    </div>
+  </div>
+
+  <div class="row results-row">
+    <div class="large-4 columns">
+      <div class="panel radius">
+        <p><strong>Database list</strong></p>
+        <div class="results-list" id="dbs">
+        </div>        			
+      </div>
+    </div>
+    
+    <div class="large-4 columns">
+      <div class="panel radius">
+        <p><strong>Journals list</strong></p>
+        <div class="results-list" id="sfx">
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 columns">
+      <div class="panel radius">
+        <p><strong>Books and Journals</strong></p>
+        <div class="results-list" id="millennium">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row results-row">
+    <div class="large-4 columns">
+      <div class="panel radius">
+        <p><strong>PubMed</strong></p>
+        <div class="results-list" id="pubmed">
+        </div>       			
+      </div>
+    </div>
+
+    <div class="large-4 columns">
+      <div class="panel radius">
+        <p><strong>Guides</strong></p>
+        <div class="results-list" id="libguides">
+        </div>       			
+      </div>
+    </div>
+
+    <div class="large-4 columns">
+      <div class="panel radius">
+        <p><strong>Library Info</strong></p>
+        <div class="results-list" id="drupal6">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+  $(document).foundation();
+  </script>
+  <script src="https://apis.ucsf.edu/jsapi?library"></script>
+  <script>
+  var success = function (results) {
+    var elem = document.getElementById(results.name);
+    if (elem) {
+      elem.innerHTML = '';
+      var ol = document.createElement('ol');
+      var li;
+      var a;
+      var text;
+
+      var l = results.data.length;
+      if (l) {
+        for (var i=0; i<l; i++) {
+          if (results.data[i].url.match(/^(https?:)?\/\/[\w:\/\?&%=\.\-~\+]+$/)) {
+            li = document.createElement('li');
+            a = document.createElement('a');
+            a.setAttribute('href', results.data[i].url);
+            if (a.hasOwnProperty('textContent')) {
+              a.textContent = results.data[i].name;
+            } else {
+              a.innerText = results.data[i].name;
+            }
+            li.appendChild(a);
+            ol.appendChild(li);
+          } else {
+            if (console) {
+              console.log('Bad URL: ' + results.data[i].url);
+            }
+          } 
+        }
+        elem.appendChild(ol);
+      } else {
+        elem.innerHTML = 'No results found.'
+      }
+    }
+  };
+
+  var failure = function (error) {
+    if (console && error.message) {
+      console.log(error.message);
+    }
+  };
+  
+  var runSearch = function (event) {
+      $('.results-list').each(function (index, elem) {
+        elem.innerHTML = '<progress>Loading&hellip;</progress>';
+      });
+      var terms = this.querySelector('.search-terms').value;
+      window.location.hash = terms;
+      event.preventDefault ? event.preventDefault() : event.returnValue = false;
+      UCSF.Library.search({q: terms, async: true}, success, failure);
+    };
+
+  $('.search-form').each(function (index, elem) { 
+    elem.onsubmit = runSearch;
+  });
+
+  if (window.location.hash) {
+    document.querySelector('.search-terms').value = window.location.hash.substring(1);
+    runSearch.call(document, document);
+  }
+  </script>
+</body>
+</html>
