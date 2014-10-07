@@ -1,4 +1,6 @@
-.results-list {
-    height: 15em;
-    overflow-y: auto;
+@media only screen and (min-width: 64.063em) {
+	.results-list {
+    	height: 15em;
+    	overflow-y: auto;
+	}
 }
