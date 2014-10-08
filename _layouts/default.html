@@ -14,8 +14,7 @@
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <a href="/" title="UCSF Library"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/logo.svg?" onerror="this.src='http://library.ucsf.edu/sites/all/themes/ucsf_theme/logo.png?'" alt="UCSF Library" /></a>
-          <img class="logo-for-printing" src="https://www.library.ucsf.edu/sites/all/themes/ucsf_theme/images/UCSF-Library-logo-for-print.gif" alt="UCSF Library" />
+          <h1><a href="/" title="UCSF Library"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/logo.svg?" onerror="this.src='http://library.ucsf.edu/sites/all/themes/ucsf_theme/logo.png?'" alt="UCSF Library" /></a></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
       </ul>
@@ -75,36 +74,37 @@
     </nav>
   </div>
 
+  <div class="clearfix show-for-medium-only"></div>
+
   <div class="row extra-info">
-    <div class="hours left" id="header-hours">
+    <div class="small-8 columns hours left" id="header-hours">
       <ul class="inline-list">
         <li><a href="/locations/hours"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/images/hours_clock.png" alt="">&nbsp;Hours</a></li>
       </ul>
     </div>
 
-    <ul class="inline-list right">
-      <li><a href="/services/spaces">Study Spaces</a></li>
-      <li><a href="/askus" title="Ask Us">Ask Us</a></li>
-    </ul>
+    <div class="small-4 columns">
+      <ul class="inline-list right">
+        <li><a href="/services/spaces">Study Spaces</a></li>
+        <li><a href="/askus" title="Ask Us">Ask Us</a></li>
+      </ul>
+    </div>
   </div>
 
-  <div class="row has-form search-bar">
+  <div class="row collapse has-form search-bar">
     <form class="search-form">
-      <div class="row collapse">
         <div class="large-8 small-9 columns">
           <input type="search" aria-label="Search terms" class="search-terms" placeholder="Find Stuff">
         </div>
         <div class="large-4 small-3 columns">
-         <!--  <a href="#" class="button">Search</a> -->
           <input type="submit" class="button" value="Search">
         </div>
-      </div>
     </form>
   </div>
 
   {{content}}
 
-  <div id="footer">
+  <div class="row" id="footer">
     <div class="footer-info">
       <a href="/about">About the Library</a> | <a href="/contact">Contact Us</a>
     </div>
