@@ -5,10 +5,6 @@
 	}
 }
 
-/**** TODO: To get display correct, you'll want to load up original Sass file and 
-            set the variable that's 45px to 65 px. This should fix menu-hiding, 
-            carats and probably other things we don't know about. */
-
 .top-bar .name {
   height: 65px;
 }
