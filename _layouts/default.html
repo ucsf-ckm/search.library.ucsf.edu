@@ -77,13 +77,13 @@
   <div class="clearfix show-for-medium-only"></div>
 
   <div class="row extra-info">
-    <div class="small-8 columns hours left" id="header-hours">
+    <div class="large-9 medium-8 small-4 columns hours left" id="header-hours">
       <ul class="inline-list">
         <li><a href="/locations/hours"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/images/hours_clock.png" alt="">&nbsp;Hours</a></li>
       </ul>
     </div>
 
-    <div class="small-4 columns">
+    <div class="large-3 medium-4 small-8 columns">
       <ul class="inline-list right">
         <li><a href="/services/spaces">Study Spaces</a></li>
         <li><a href="/askus" title="Ask Us">Ask Us</a></li>
@@ -123,21 +123,23 @@
       };
 
       var success = function (result) {
-        var prependHours = function (id, label) {
+        var prependHours = function (id, label, className) {
           var hours = locations[id];
           if (hours) {
             var hoursText = hours[0].text.replace(/[^\w\s:-]/,'');
-            $('#header-hours ul').prepend(
-              $('<li>').append(label + ': ' + hoursText)
-            );
+            var li = $('<li>').append(label + ': ' + hoursText);
+            if (className) {
+              li.addClass(className);
+            }
+            $('#header-hours ul').prepend(li);
           }
         };
 
         var locations = result.locations;
         if (locations) {
-          prependHours('missionBay', 'MB Library');
-          prependHours('parnassus', 'Parnassus');
-          $('#header-hours ul').prepend('<li>Today:</li>');
+          prependHours('missionBay', 'MB Library', 'show-for-large-up');
+          prependHours('parnassus', 'Parnassus', 'show-for-medium-up');
+          $('#header-hours ul').prepend('<li class="show-for-medium-up">Today:</li>');
         }
       };
 
