@@ -4,3 +4,117 @@
     	overflow-y: auto;
 	}
 }
+
+.contain-to-grid, .top-bar {
+  background: white;
+}
+
+.top-bar .name {
+  height: 65px;
+}
+
+.logo-for-printing {
+  display: none;
+}
+
+#search-bar {
+  background-color: #ad4200;
+  padding: 7px 0 7px 17px;
+  margin-bottom: 3px;
+}
+
+div.extra-info {
+  width: 100%;
+  height: 30px;
+  background-color: #2B85BB;
+  color: #fff;
+  margin-bottom: 3px;
+  clear: both;
+}
+
+.extra-info ul.extra-links {
+  float: right;
+  padding: 6px;
+  line-height: 1em;
+}
+
+.extra-info ul.extra-links li {
+  padding: 0 20px 0 0;
+  display: inline-block;
+}
+
+div.extra-info ul li a {
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #fff;
+  padding: 2px 0;
+}
+
+.hours {
+  line-height: 1em;
+}
+
+.hours span {
+  padding: 3px 20px 0 0;
+  float: left;
+}
+
+.hours ul {
+  display: inline-block;
+}
+
+.extra-info .hours {
+  float: left;
+  padding: 6px 8px 0 12px;
+  min-width: 40%;
+}
+
+.extra-info .hours ul li {
+  display: inline-block;
+  padding: 0 20px 0 0;
+  margin: 0;
+}
+
+#footer {
+  margin-top: 10px;
+  padding: 0 18px 40px 18px;
+  border-top: 1px #ccc solid;
+  clear: left;
+}
+
+#footer .footer-info {
+  float: left;
+}
+
+#footer .credits {
+  float: right;
+  text-align: right;
+}
+
+#socialicons span {
+  float: right;
+  display: block;
+  height: 28px;
+  width: 29px;
+  background-image: url(https://www.library.ucsf.edu/sites/all/themes/ucsf_theme/css/images/footericons_180x34.png);
+  background-repeat: no-repeat;
+}
+
+#news-social-icon {
+  background-position: -88px 0px;
+}
+
+#merch-social-icon {
+  background-position: -59px 0px;
+}
+
+#twitter-social-icon {
+  background-position: -30px 0px;
+}
+
+#facebook-social-icon {
+  background-position: -2px 0px;
+}
+
+
+

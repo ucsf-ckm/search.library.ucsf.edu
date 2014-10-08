@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>UCSF Library Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/tweaks.css" />
+  <script src="js/vendor/modernizr.js"></script>
+</head>
+
+<body>
+  <div class="contain-to-grid">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <a href="/" title="UCSF Library"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/logo.svg?" onerror="this.src='http://library.ucsf.edu/sites/all/themes/ucsf_theme/logo.png?'" alt="UCSF Library" /></a>
+          <img class="logo-for-printing" src="https://www.library.ucsf.edu/sites/all/themes/ucsf_theme/images/UCSF-Library-logo-for-print.gif" alt="UCSF Library" />
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="/find">Search & Find</a>
+            <ul class="dropdown">
+              <li><a href="https://ucsf.idm.oclc.org/login?url=http://www.ncbi.nlm.nih.gov/pubmed?tool=cdl&amp;otool=cdlotool">PubMed@UCSF</a></li>
+              <li><a href="/collections/journals">Journals</a></li>
+              <li><a href="/db">Databases</a></li>
+              <li><a href="http://guides.ucsf.edu/">Guides by Topic</a></li>
+              <li><a href="http://ucsfcat.library.ucsf.edu/">UCSF Library Catalog</a></li>
+              <li><a href="https://ucsf.idm.oclc.org/login?url=http://ucsf.worldcat.org/">UC-wide Catalog (Melvyl)</a></li>
+              <li><a href="/collections/reserves">Course Reserves</a></li>
+              <li><a href="/collections/archives">Archives &amp; Online Collections</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a href="/use">Use the Library</a>
+            <ul class="dropdown">
+              <li><a href="/services/spaces">Study Spaces</a></li>
+              <li><a href="/services/computing">Computers, Equipment, Help</a></li>
+              <li><a href="/services/borrowing">Borrow, Renew, Request</a></li>
+              <li><a href="/print-scan-copy">Print, Scan, Copy</a></li>
+              <li><a href="/services/browsertools">Apps &amp; Widgets</a></li>
+              <li><a href="/visit/parnassus">Parnassus location</a></li>
+              <li><a href="/visit/missionbay">Mission Bay location</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a href="/research">Research Support</a>
+            <ul class="dropdown">
+              <li><a href="/services/scholpub">Open Access &amp; Publishing</a></li>
+              <li><a href="/help/citemgmt">Citation Management</a></li>
+              <li><a href="/bioinformatics">Bioinformatics Support</a></li>
+              <li><a href="/data-management">Data Management</a></li>
+              <li><a href="/help/classes">Classes &amp; Workshops</a></li>
+              <li><a href="/help/consulting">Meet with an Expert</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a href="/course">Course Support</a>
+            <ul class="dropdown">
+              <li><a href="https://courses.ucsf.edu/">CLE</a></li>
+              <li><a href="/help/classes">Classes &amp; Workshops</a></li>
+              <li><a href="/help/consulting">Meet with an Expert</a></li>
+              <li><a href="/collections/reserves">Course Reserves</a></li>
+              <li><a href="/services/learningtech">Learning Technologies</a></li>
+              <li><a href="/faculty">Faculty Support</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+
+  <div class="block extra-info">
+    <div class="hours" id="header-hours">
+      <ul>
+        <li><a href="/locations/hours"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/images/hours_clock.png" alt="">&nbsp;HOURS</a></li>
+      </ul>
+    </div>
+    <ul class="extra-links">
+      <li><a href="/services/spaces">Study Spaces</a></li>
+      <li><a href="/askus" title="Ask Us">Ask Us</a></li>
+    </ul>
+  </div>
+
+  <div id="search-bar" class="has-form">
+    <form class="search-form">
+      <div class="row collapse">
+        <div class="large-8 small-9 columns">
+          <input type="search" aria-label="Search terms" class="search-terms" placeholder="Find Stuff">
+        </div>
+        <div class="large-4 small-3 columns">
+         <!--  <a href="#" class="button">Search</a> -->
+          <input type="submit" class="button" value="Search">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  {{content}}
+
+  <div id="footer">
+    <div class="footer-info">
+      <a href="/about">About the Library</a> | <a href="/contact">Contact Us</a>
+    </div>
+    <p id="socialicons">
+      <a href="http://www.library.ucsf.edu/news/all/feed" title="RSS"><span title="News" id="news-social-icon"></span></a>
+      <a href="http://www.zazzle.com/ucsflibrary" title="Zazzle"><span title="UCSF Library merchandise" id="merch-social-icon"></span></a>
+      <a href="http://twitter.com/ucsf_library" title="Twitter"><span title="Twitter" id="twitter-social-icon"></span></a>
+      <a href="http://www.facebook.com/ucsflibrary" title="Facebook"><span title="Facebook" id="facebook-social-icon"></span></a>
+    </p>
+  </div> <!-- /#footer -->
+
+  <script src="https://apis.ucsf.edu/jsapi?library"></script>
+  <script>  
+    var getHours = function () {
+      var failure = function () {
+      };
+
+      var success = function (result) {
+        var prependHours = function (id, label) {
+          var hours = locations[id];
+          if (hours) {
+            var hoursText = hours[0].text.replace(/[^\w\s:-]/,'');
+            $('#header-hours ul').prepend(
+              $('<li>').append(label + ': ' + hoursText)
+            );
+          }
+        };
+
+        var locations = result.locations;
+        if (locations) {
+          $('#header-hours').prepend('<span>Today:</span>');
+          prependHours('missionBay', 'MB Library');
+          prependHours('parnassus', 'Parnassus');
+        }
+      };
+
+      UCSF.Library.hours({}, success, failure);
+    };
+
+    if (window.addEventListener) {
+      window.addEventListener('load', getHours, false);
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', getHours);
+    }
+  </script>
+</body>
+</html>
