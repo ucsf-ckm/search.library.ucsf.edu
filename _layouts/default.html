@@ -75,19 +75,20 @@
     </nav>
   </div>
 
-  <div class="block extra-info">
-    <div class="hours" id="header-hours">
-      <ul>
-        <li><a href="/locations/hours"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/images/hours_clock.png" alt="">&nbsp;HOURS</a></li>
+  <div class="row extra-info">
+    <div class="hours left" id="header-hours">
+      <ul class="inline-list">
+        <li><a href="/locations/hours"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/images/hours_clock.png" alt="">&nbsp;Hours</a></li>
       </ul>
     </div>
-    <ul class="extra-links">
+
+    <ul class="inline-list right">
       <li><a href="/services/spaces">Study Spaces</a></li>
       <li><a href="/askus" title="Ask Us">Ask Us</a></li>
     </ul>
   </div>
 
-  <div id="search-bar" class="has-form">
+  <div class="row has-form search-bar">
     <form class="search-form">
       <div class="row collapse">
         <div class="large-8 small-9 columns">
@@ -134,9 +135,9 @@
 
         var locations = result.locations;
         if (locations) {
-          $('#header-hours').prepend('<span>Today:</span>');
           prependHours('missionBay', 'MB Library');
           prependHours('parnassus', 'Parnassus');
+          $('#header-hours ul').prepend('<li>Today:</li>');
         }
       };
 
