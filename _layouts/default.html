@@ -91,15 +91,19 @@
     </div>
   </div>
 
-  <div class="row collapse has-form search-bar">
+  <div class="row has-form search-bar">
+    <div class="large-12 columns">
     <form class="search-form">
-        <div class="large-8 small-9 columns">
-          <input type="search" aria-label="Search terms" class="search-terms" placeholder="Find Stuff">
-        </div>
-        <div class="large-4 small-3 columns">
-          <input type="submit" class="button" value="Search">
-        </div>
+      <div class="row collapse">
+      <div class="large-8 small-9 columns">
+        <input type="search" aria-label="Search terms" class="search-terms" placeholder="Find Stuff">
+      </div>
+      <div class="large-4 small-3 columns">
+        <input type="submit" class="button postfix" value="Search">
+      </div>
+    </div>
     </form>
+  </div>
   </div>
 
   {{content}}
