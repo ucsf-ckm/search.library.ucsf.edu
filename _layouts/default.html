@@ -11,7 +11,6 @@
 
 <body>
   <div class="contain-to-grid">
-
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
@@ -74,38 +73,35 @@
         </ul>
       </section>
     </nav>
-
-    <div class="block extra-info">
-      <div class="hours" id="header-hours">
-        <ul>
-          <li><a href="/locations/hours"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/images/hours_clock.png" alt="">&nbsp;HOURS</a></li>
-        </ul>
-      </div>
-      <ul class="extra-links">
-        <li><a href="/services/spaces">Study Spaces</a></li>
-        <li><a href="/askus" title="Ask Us">Ask Us</a></li>
-      </ul>
-    </div>
-
-    <div id="search-bar">
-      <div class="block block-ucsf_quicksearch" id="block-ucsf_quicksearch-ucsf_quicksearch_block">
-        <div class="block-inner">
-          <div class="content">
-            <form class="search-form">
-              <div>
-                <div class="form-item" id="edit-quicksearch-keywords-wrapper">
-                  <input type="text" maxlength="128" aria-label="Search terms" size="25" class="search-terms" />
-                </div>
-                <input type="submit" name="op" id="edit-submit" value="Search"  class="form-submit" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
-    {{content}}
+  <div class="block extra-info">
+    <div class="hours" id="header-hours">
+      <ul>
+        <li><a href="/locations/hours"><img src="http://library.ucsf.edu/sites/all/themes/ucsf_theme/images/hours_clock.png" alt="">&nbsp;HOURS</a></li>
+      </ul>
+    </div>
+    <ul class="extra-links">
+      <li><a href="/services/spaces">Study Spaces</a></li>
+      <li><a href="/askus" title="Ask Us">Ask Us</a></li>
+    </ul>
+  </div>
+
+  <div id="search-bar" class="has-form">
+    <form class="search-form">
+      <div class="row collapse">
+        <div class="large-8 small-9 columns">
+          <input type="search" aria-label="Search terms" class="search-terms" placeholder="Find Stuff">
+        </div>
+        <div class="large-4 small-3 columns">
+         <!--  <a href="#" class="button">Search</a> -->
+          <input type="submit" class="button" value="Search">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  {{content}}
 
   <div id="footer">
     <div class="footer-info">
