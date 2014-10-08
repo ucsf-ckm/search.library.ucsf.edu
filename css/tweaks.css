@@ -5,12 +5,6 @@
 	}
 }
 
-html,body {
-  height: 100%;
-  max-width: 964px;
-  margin: auto;
-}
-
 #logo-for-printing {
   display: none;
 }
