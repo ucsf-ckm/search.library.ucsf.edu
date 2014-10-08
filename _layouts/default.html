@@ -126,107 +126,38 @@
     </div>
   </div> <!-- /#page-wrapper -->
   <script src="https://apis.ucsf.edu/jsapi?library"></script>
-  <script>
-  Drupal.behaviors.tableHeader = function(){};
-  </script>
-  <script>
-  (function ($) {
-    if ($('#api_hours_today_iid138_lid0').length) {
-      Drupal.behaviors.ucsfLibraryHoursPane = function(context) {
-        var externalScript = $('<script>').attr('src', 'https://api.libcal.com/api_hours_today.php?iid=138&lid=0&format=js&context=object');
-        $('body').append(externalScript);
-      }
-    }
-  }(jQuery));
-  </script>
-  <script>
-    (function () {
-      Drupal.behaviors.ucsfLibraryHours = function() {
-        var getHours = function () {
-          var failure = function () {
-          };
-
-          var success = function (result) {
-            var prependHours = function (id, label) {
-              var hours = locations[id];
-              if (hours) {
-                var hoursText = hours[0].text.replace(/[^\w\s:-]/,'');
-                $('#header-hours ul').prepend(
-                  $('<li>').append(label + ': ' + hoursText)
-                );
-              }
-            };
-
-            var locations = result.locations;
-            if (locations) {
-              $('#header-hours').prepend('<span>Today:</span>');
-              prependHours('missionBay', 'MB Library');
-              prependHours('parnassus', 'Parnassus');
-            }
-          };
-
-          UCSF.Library.hours({}, success, failure);
-        }
-
-        if (window.addEventListener) {
-          window.addEventListener('load', getHours, false);
-        } else if (window.attachEvent) {
-          window.attachEvent('onload', getHours);
-        }
+  <script>  
+    var getHours = function () {
+      var failure = function () {
       };
 
-      Drupal.behaviors.ucsfLibraryOfNote = function(context) {
-        // Hide pane in case apis.ucsf.edu is down or IE8 is weird
-        var pane = document.getElementById('featured-guide-pane');
-        if (pane) {
-          pane.setAttribute('style', 'visibility:hidden');
-        }
-
-        var getGuides = function () {
-          var failure = function () {
-          };
-
-          var success = function (result) {
-            var guides = result.guides;
-            if (guides) {
-              var randomGuideIndex = Math.floor(Math.random() * guides.length);
-              var randomGuide = guides[randomGuideIndex];
-              if (randomGuide) {
-                var guides_results = document.getElementById('featured-guide');
-                if (guides_results) {
-                  var textContent;
-                  if ("textContent" in guides_results) {
-                    textContent = "textContent";
-                  } else {
-                    textContent = "innerText";
-                  }
-                  var a = document.createElement('a');
-                  a.href = randomGuide.href;
-                  a[textContent] = randomGuide.title;
-                  guides_results.appendChild(a);
-
-                  var textNode = document.createTextNode(' - ' + randomGuide.desc);
-                  guides_results.appendChild(textNode);
-                }
-              }
-            } else {
-              failure();
-            }
-          };
-
-          UCSF.Library.guides({}, success, failure);
-          if (pane) {
-            pane.removeAttribute('style');
+      var success = function (result) {
+        var prependHours = function (id, label) {
+          var hours = locations[id];
+          if (hours) {
+            var hoursText = hours[0].text.replace(/[^\w\s:-]/,'');
+            $('#header-hours ul').prepend(
+              $('<li>').append(label + ': ' + hoursText)
+            );
           }
-        }
+        };
 
-        if (window.addEventListener) {
-          window.addEventListener("load", getGuides, false);
-        } else if (window.attachEvent) {
-          window.attachEvent("onload", getGuides);
+        var locations = result.locations;
+        if (locations) {
+          $('#header-hours').prepend('<span>Today:</span>');
+          prependHours('missionBay', 'MB Library');
+          prependHours('parnassus', 'Parnassus');
         }
       };
-    }());
+
+      UCSF.Library.hours({}, success, failure);
+    };
+
+    if (window.addEventListener) {
+      window.addEventListener('load', getHours, false);
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', getHours);
+    }
   </script>
 </body>
 </html>
