@@ -5,10 +5,6 @@
 	}
 }
 
-.logo-for-printing {
-  display: none;
-}
-
 .search-bar {
   background-color: #ad4200;
 }
@@ -21,10 +17,6 @@ div.extra-info {
 
 div.extra-info ul li a {
   color: #fff;
-}
-
-.hours {
-  line-height: 1em;
 }
 
 #footer {
