@@ -5,7 +5,15 @@
 	}
 }
 
-#logo-for-printing {
+.contain-to-grid, .top-bar {
+  background: white;
+}
+
+.top-bar .name {
+  height: 65px;
+}
+
+.logo-for-printing {
   display: none;
 }
 
