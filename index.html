@@ -2,6 +2,9 @@
 layout: default
 ---
 
+  <div data-alert id="didyoumean" class="row hide">
+  </div>
+
   <div class="row results-row">
     <div class="large-4 columns">
       <div class="panel radius">
@@ -62,10 +65,10 @@ layout: default
   <script src="https://apis.ucsf.edu/jsapi?library"></script>
   <script>
   var success = function (results) {
-    var elem = document.getElementById(results.name);
-    if (elem) {
-      elem.innerHTML = '';
-      var ol = document.createElement('ol');
+    var elem = $('#' + results.name);
+    if (elem.length) {
+      elem.empty();
+      var ol = $('<ol>');
       var li;
       var a;
       var text;
@@ -74,26 +77,45 @@ layout: default
       if (l) {
         for (var i=0; i<l; i++) {
           if (results.data[i].url.match(/^(https?:)?\/\/[\w:\/\?&%=\.\-~\+]+$/)) {
-            li = document.createElement('li');
-            a = document.createElement('a');
-            a.setAttribute('href', results.data[i].url);
-            if (a.hasOwnProperty('textContent')) {
-              a.textContent = results.data[i].name;
-            } else {
-              a.innerText = results.data[i].name;
-            }
-            li.appendChild(a);
-            ol.appendChild(li);
+            li = $('<li>');
+            a = $('<a>')
+              .attr('href', results.data[i].url)
+              .text(results.data[i].name);
+            li.append(a);
+            ol.append(li);
           } else {
-            if (console) {
-              console.log('Bad URL: ' + results.data[i].url);
+            if (window.console && window.console.log) {
+              window.console.log('Bad URL: ' + results.data[i].url);
             }
           } 
         }
-        elem.appendChild(ol);
+        elem.append(ol);
       } else {
-        elem.innerHTML = 'No results found.'
+        elem.text('No results found.');
       }
+
+      if (results.name === "pubmed" && results.suggestedTerms instanceof Array) {
+        if (results.suggestedTerms[0]) {
+
+          var termsLink = $('<a>')
+            .attr('href', '#' + results.suggestedTerms[0]);
+          termsLink.append(
+            $('<em>')
+              .text(results.suggestedTerms[0])
+          );
+
+          var didyoumean = $('#didyoumean').show();
+          var alertBox = $('<div>')
+            .addClass('alert-box')
+            .addClass('info');
+          var span = $('<span>')
+            .append('Did you mean ')
+            .append(termsLink)
+            .append('?');
+          alertBox.append(span);
+          didyoumean.append(alertBox);
+        }
+      } 
     }
   };
 
@@ -104,21 +126,31 @@ layout: default
   };
   
   var runSearch = function (event) {
+      $('#didyoumean').empty().hide();
       $('.results-list').each(function (index, elem) {
         elem.innerHTML = '<progress>Loading&hellip;</progress>';
       });
       var terms = this.querySelector('.search-terms').value;
       window.location.hash = terms;
-      event.preventDefault ? event.preventDefault() : event.returnValue = false;
       UCSF.Library.search({q: terms, async: true}, success, failure);
     };
 
-  $('.search-form').each(function (index, elem) { 
-    elem.onsubmit = runSearch;
+  $('.search-form').each(function (index, elem) {
+    elem.onsubmit = function (event) {
+      event.preventDefault ? event.preventDefault() : event.returnValue = false;
+      var terms = this.querySelector('.search-terms').value;
+      window.location.hash = terms;
+    }
   });
 
-  if (window.location.hash) {
+  var runSearchWithHashValue = function () {
     document.querySelector('.search-terms').value = window.location.hash.substring(1);
     runSearch.call(document, document);
   }
+
+  if (window.location.hash) {
+    runSearchWithHashValue()
+  }
+
+  $(window).bind('hashchange', runSearchWithHashValue);
   </script>
