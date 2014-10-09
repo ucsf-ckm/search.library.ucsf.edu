@@ -64,6 +64,28 @@ layout: default
   </script>
   <script src="https://apis.ucsf.edu/jsapi?library"></script>
   <script>
+  var showSuggestedTerms = function (suggestedTerms) {
+    if (suggestedTerms) {
+      var termsLink = $('<a>')
+        .attr('href', '#' + suggestedTerms);
+      termsLink.append(
+        $('<em>')
+          .text(suggestedTerms)
+      );
+
+      var didyoumean = $('#didyoumean').show();
+      var alertBox = $('<div>')
+        .addClass('alert-box')
+        .addClass('info');
+      var span = $('<span>')
+        .append('Did you mean ')
+        .append(termsLink)
+        .append('?');
+      alertBox.append(span);
+      didyoumean.append(alertBox);
+    }
+  };
+
   var success = function (results) {
     var elem = $('#' + results.name);
     if (elem.length) {
@@ -93,31 +115,13 @@ layout: default
       } else {
         elem.text('No results found.');
       }
-
-      if (results.name === "pubmed" && results.suggestedTerms instanceof Array) {
-        if (results.suggestedTerms[0]) {
-
-          var termsLink = $('<a>')
-            .attr('href', '#' + results.suggestedTerms[0]);
-          termsLink.append(
-            $('<em>')
-              .text(results.suggestedTerms[0])
-          );
-
-          var didyoumean = $('#didyoumean').show();
-          var alertBox = $('<div>')
-            .addClass('alert-box')
-            .addClass('info');
-          var span = $('<span>')
-            .append('Did you mean ')
-            .append(termsLink)
-            .append('?');
-          alertBox.append(span);
-          didyoumean.append(alertBox);
-        }
-      } 
     }
-  };
+
+    if (results.name === "pubmed" && results.suggestedTerms instanceof Array) {
+      showSuggestedTerms(results.suggestedTerms[0]); 
+    }
+  }
+  
 
   var failure = function (error) {
     if (console && error.message) {
