@@ -27,45 +27,6 @@ div.extra-info ul li a {
 }
 
 .footer {
-  margin-top: 10px;
-  padding: 0 18px 40px 18px;
   border-top: 1px #ccc solid;
-  clear: left;
 }
-
-.footer .footer-info {
-  float: left;
-}
-
-.footer .credits {
-  float: right;
-  text-align: right;
-}
-
-.socialicons span {
-  float: right;
-  display: block;
-  height: 28px;
-  width: 29px;
-  background-image: url(https://www.library.ucsf.edu/sites/all/themes/ucsf_theme/css/images/footericons_180x34.png);
-  background-repeat: no-repeat;
-}
-
-.news-social-icon {
-  background-position: -88px 0;
-}
-
-.merch-social-icon {
-  background-position: -59px 0;
-}
-
-.twitter-social-icon {
-  background-position: -30px 0;
-}
-
-.facebook-social-icon {
-  background-position: -2px 0;
-}
-
-
 
