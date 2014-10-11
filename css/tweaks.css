@@ -26,23 +26,23 @@ div.extra-info ul li a {
   color: #fff;
 }
 
-#footer {
+.footer {
   margin-top: 10px;
   padding: 0 18px 40px 18px;
   border-top: 1px #ccc solid;
   clear: left;
 }
 
-#footer .footer-info {
+.footer .footer-info {
   float: left;
 }
 
-#footer .credits {
+.footer .credits {
   float: right;
   text-align: right;
 }
 
-#socialicons span {
+.socialicons span {
   float: right;
   display: block;
   height: 28px;
@@ -51,20 +51,20 @@ div.extra-info ul li a {
   background-repeat: no-repeat;
 }
 
-#news-social-icon {
-  background-position: -88px 0px;
+.news-social-icon {
+  background-position: -88px 0;
 }
 
-#merch-social-icon {
-  background-position: -59px 0px;
+.merch-social-icon {
+  background-position: -59px 0;
 }
 
-#twitter-social-icon {
-  background-position: -30px 0px;
+.twitter-social-icon {
+  background-position: -30px 0;
 }
 
-#facebook-social-icon {
-  background-position: -2px 0px;
+.facebook-social-icon {
+  background-position: -2px 0;
 }
 
 
