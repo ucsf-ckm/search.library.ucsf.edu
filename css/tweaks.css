@@ -7,7 +7,7 @@
 }
 
 /* iOS Safari zooms on search box focus without this */
-input.search-terms {
+input[type="search"] {
   font-size: 1rem;
 }
 
