@@ -87,6 +87,7 @@ layout: default
   };
 
   var success = function (results) {
+    var urlRegExp = /^(https?:)?\/\/[\w:\/\?&%=\.\-~\+]+$/;
     var elem = $('#' + results.name);
     if (elem.length) {
       elem.empty();
@@ -98,7 +99,7 @@ layout: default
       var l = results.data.length;
       if (l) {
         for (var i=0; i<l; i++) {
-          if (results.data[i].url.match(/^(https?:)?\/\/[\w:\/\?&%=\.\-~\+]+$/)) {
+          if (typeof results.data[i].url === "string" && results.data[i].url.match(urlRegExp)) {
             li = $('<li>');
             a = $('<a>')
               .attr('href', results.data[i].url)
@@ -112,7 +113,9 @@ layout: default
           } 
         }
         elem.append(ol);
-        elem.append($('<a>').attr('href', '#').text('All Results'));
+        if (results.name !== "drupal6" && typeof results.url === "string" && results.url.match(urlRegExp)) {
+          elem.append($('<a>').attr('href', results.url).text('All Results'));
+        }
       } else {
         elem.text('No results found.');
       }
