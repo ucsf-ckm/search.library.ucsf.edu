@@ -61,104 +61,104 @@ layout: default
   <script src="js/foundation.min.js"></script>
   <script>
   $(document).foundation();
-  </script>
-  <script src="https://apis.ucsf.edu/jsapi?library"></script>
-  <script>
-  var showSuggestedTerms = function (suggestedTerms) {
-    if (suggestedTerms) {
-      var termsLink = $('<a>')
-        .attr('href', '#' + suggestedTerms);
-      termsLink.append(
-        $('<em>')
-          .text(suggestedTerms)
-      );
 
-      var didyoumean = $('#didyoumean').show();
-      var alertBox = $('<div>')
-        .addClass('alert-box')
-        .addClass('info');
-      var span = $('<span>')
-        .append('Did you mean ')
-        .append(termsLink)
-        .append('?');
-      alertBox.append(span);
-      didyoumean.append(alertBox);
-    }
-  };
+  $(document).ready(function () {
+    var showSuggestedTerms = function (suggestedTerms) {
+      if (suggestedTerms) {
+        var termsLink = $('<a>')
+          .attr('href', '#' + suggestedTerms);
+        termsLink.append(
+          $('<em>')
+            .text(suggestedTerms)
+        );
 
-  var success = function (results) {
-    var urlRegExp = /^(https?:)?\/\/[\w:\/\?&%=\.\-~\+]+$/;
-    var elem = $('#' + results.name);
-    if (elem.length) {
-      elem.empty();
-      var ol = $('<ol>');
-      var li;
-      var a;
-      var text;
-
-      var l = results.data.length;
-      if (l) {
-        for (var i=0; i<l; i++) {
-          if (typeof results.data[i].url === "string" && results.data[i].url.match(urlRegExp)) {
-            li = $('<li>');
-            a = $('<a>')
-              .attr('href', results.data[i].url)
-              .text(results.data[i].name);
-            li.append(a);
-            ol.append(li);
-          } else {
-            if (window.console && window.console.log) {
-              window.console.log('Bad URL: ' + results.data[i].url);
-            }
-          } 
-        }
-        elem.append(ol);
-        if (results.name !== "drupal6" && typeof results.url === "string" && results.url.match(urlRegExp)) {
-          elem.append($('<a>').attr('href', results.url).text('All Results'));
-        }
-      } else {
-        elem.text('No results found.');
+        var didyoumean = $('#didyoumean').show();
+        var alertBox = $('<div>')
+          .addClass('alert-box')
+          .addClass('info');
+        var span = $('<span>')
+          .append('Did you mean ')
+          .append(termsLink)
+          .append('?');
+        alertBox.append(span);
+        didyoumean.append(alertBox);
       }
-    }
-
-    if (results.name === "pubmed" && results.suggestedTerms instanceof Array) {
-      showSuggestedTerms(results.suggestedTerms[0]); 
-    }
-  }
-  
-
-  var failure = function (error) {
-    if (console && error.message) {
-      console.log(error.message);
-    }
-  };
-  
-  var runSearch = function (event) {
-      $('#didyoumean').empty().hide();
-      $('.results-list').each(function (index, elem) {
-        elem.innerHTML = '<progress>Loading&hellip;</progress>';
-      });
-      var terms = this.querySelector('.search-terms').value;
-      window.location.hash = encodeURIComponent(terms);
-      UCSF.Library.search({q: terms, async: true}, success, failure);
     };
 
-  $('.search-form').each(function (index, elem) {
-    elem.onsubmit = function (event) {
-      event.preventDefault ? event.preventDefault() : event.returnValue = false;
-      var terms = this.querySelector('.search-terms').value;
-      window.location.hash = encodeURIComponent(terms);
+    var success = function (results) {
+      var urlRegExp = /^(https?:)?\/\/[\w:\/\?&%=\.\-~\+]+$/;
+      var elem = $('#' + results.name);
+      if (elem.length) {
+        elem.empty();
+        var ol = $('<ol>');
+        var li;
+        var a;
+        var text;
+
+        var l = results.data.length;
+        if (l) {
+          for (var i=0; i<l; i++) {
+            if (typeof results.data[i].url === "string" && results.data[i].url.match(urlRegExp)) {
+              li = $('<li>');
+              a = $('<a>')
+                .attr('href', results.data[i].url)
+                .text(results.data[i].name);
+              li.append(a);
+              ol.append(li);
+            } else {
+              if (window.console && window.console.log) {
+                window.console.log('Bad URL: ' + results.data[i].url);
+              }
+            } 
+          }
+          elem.append(ol);
+          if (results.name !== "drupal6" && typeof results.url === "string" && results.url.match(urlRegExp)) {
+            elem.append($('<a>').attr('href', results.url).text('All Results'));
+          }
+        } else {
+          elem.text('No results found.');
+        }
+      }
+
+      if (results.name === "pubmed" && results.suggestedTerms instanceof Array) {
+        showSuggestedTerms(results.suggestedTerms[0]); 
+      }
     }
+    
+
+    var failure = function (error) {
+      if (console && error.message) {
+        console.log(error.message);
+      }
+    };
+    
+    var runSearch = function (event) {
+        $('#didyoumean').empty().hide();
+        $('.results-list').each(function (index, elem) {
+          elem.innerHTML = '<progress>Loading&hellip;</progress>';
+        });
+        var terms = this.querySelector('.search-terms').value;
+        window.location.hash = encodeURIComponent(terms);
+        UCSF.Library.search({q: terms, async: true}, success, failure);
+      };
+
+    $('.search-form').each(function (index, elem) {
+      elem.onsubmit = function (event) {
+        event.preventDefault ? event.preventDefault() : event.returnValue = false;
+        var terms = this.querySelector('.search-terms').value;
+        window.location.hash = encodeURIComponent(terms);
+      }
+    });
+
+    var runSearchWithHashValue = function () {
+      document.querySelector('.search-terms').value = decodeURIComponent(window.location.hash.substring(1));
+      runSearch.call(document, document);
+    }
+
+    if (window.location.hash) {
+      runSearchWithHashValue()
+    }
+
+    $(window).bind('hashchange', runSearchWithHashValue);
   });
-
-  var runSearchWithHashValue = function () {
-    document.querySelector('.search-terms').value = decodeURIComponent(window.location.hash.substring(1));
-    runSearch.call(document, document);
-  }
-
-  if (window.location.hash) {
-    runSearchWithHashValue()
-  }
-
-  $(window).bind('hashchange', runSearchWithHashValue);
   </script>
