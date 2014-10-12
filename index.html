@@ -156,9 +156,16 @@ layout: default
     }
 
     if (window.location.hash) {
+      $('title').text('UCSF Library Search: ' + decodeURIComponent(window.location.hash.substring(1)));
       runSearchWithHashValue()
     }
 
-    $(window).bind('hashchange', runSearchWithHashValue);
+    var hashChangeHandler = function () {
+      $('title').text('UCSF Library Search: ' + decodeURIComponent(window.location.hash.substring(1)));
+      ga('send', 'pageview');
+      runSearchWithHashValue();
+    };
+
+    $(window).bind('hashchange', hashChangeHandler);
   });
   </script>
