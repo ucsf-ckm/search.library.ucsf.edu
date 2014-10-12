@@ -139,7 +139,7 @@ layout: default
         elem.innerHTML = '<progress>Loading&hellip;</progress>';
       });
       var terms = this.querySelector('.search-terms').value;
-      window.location.hash = terms;
+      window.location.hash = encodeURIComponent(terms);
       UCSF.Library.search({q: terms, async: true}, success, failure);
     };
 
@@ -147,12 +147,12 @@ layout: default
     elem.onsubmit = function (event) {
       event.preventDefault ? event.preventDefault() : event.returnValue = false;
       var terms = this.querySelector('.search-terms').value;
-      window.location.hash = terms;
+      window.location.hash = encodeURIComponent(terms);
     }
   });
 
   var runSearchWithHashValue = function () {
-    document.querySelector('.search-terms').value = window.location.hash.substring(1);
+    document.querySelector('.search-terms').value = decodeURIComponent(window.location.hash.substring(1));
     runSearch.call(document, document);
   }
 
