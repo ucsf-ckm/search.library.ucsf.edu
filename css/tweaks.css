@@ -21,7 +21,7 @@ input[type="search"] {
 }
 
 .top-bar-section li:not(.has-form) a:not(.button) {
-  padding-left: 10px;
+  padding-left: 9px;
 }
 
 .search-bar {
