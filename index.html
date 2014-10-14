@@ -146,25 +146,26 @@ layout: default
     };
     
     var runSearch = function (event) {
-        $('#didyoumean').empty().hide();
-        $('.results-list').each(function (index, elem) {
-          elem.innerHTML = '<progress>Loading&hellip;</progress>';
-        });
-        var terms = this.querySelector('.search-terms').value;
-        window.location.hash = encodeURIComponent(terms);
-        if (typeof EventSource !== "undefined") {
-          // asynchronous updates, woo hoo!
-          UCSF.Library.search({q: terms, async: true}, success, failure);
-        } else {
-          // one big fat honkin' update (or else six separate AJAX calls), boo!
-          $.getJSON( 'http://apis.ucsf.edu/library/search', {q: terms}, function (cols) {
-            console.log(cols);
-            for (var i=0, l=cols.length; i<l; i++) {
-              success(cols[i]);
-            }
-          }).fail(failure);
+      $('#didyoumean').empty().hide();
+      $('.results-list').each(function (index, elem) {
+        elem.innerHTML = '<progress>Loading&hellip;</progress>';
+      });
+      var terms = this.querySelector('.search-terms').value;
+      window.location.hash = encodeURIComponent(terms);
+      if (typeof EventSource !== "undefined") {
+        // asynchronous updates, woo hoo!
+        UCSF.Library.search({q: terms, async: true}, success, failure);
+      } else {
+        // no server-sent events, so six separate AJAX calls, boo!
+        var cols = ['dbs', 'sfx', 'millennium', 'pubmed', 'libguides', 'drupal6'];
+        for (var i=0, l=cols.length; i<l; i++) {
+          $.getJSON( 'http://apis.ucsf.edu/library/search', {q: terms, c:[cols[i]]}, function (col) {
+            success(col[0]);
+          })
+            .fail(failure);
         }
-      };
+      }
+    };
 
     $('.search-form').each(function (index, elem) {
       elem.onsubmit = function (event) {
