@@ -16,6 +16,14 @@ input[type="search"] {
   font-weight: bold;
 }
 
+.top-bar .name h1 a {
+  padding: 0;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  padding-left: 10px;
+}
+
 .search-bar {
   background-color: #ad4200;
   margin-bottom: 1em;
