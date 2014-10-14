@@ -59,6 +59,10 @@ layout: default
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation.min.js"></script>
+  
+  <!--[if IE]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.2/jquery.xdomainrequest.min.js"></script>
+  <![endif]-->
   <script>
   $(document).foundation();
 
@@ -125,7 +129,6 @@ layout: default
       }
     }
     
-
     var failure = function (error) {
       if (console && error.message) {
         console.log(error.message);
@@ -139,7 +142,19 @@ layout: default
         });
         var terms = this.querySelector('.search-terms').value;
         window.location.hash = encodeURIComponent(terms);
-        UCSF.Library.search({q: terms, async: true}, success, failure);
+        if (typeof EventSource !== "undefined") {
+          // asynchronous updates, woo hoo!
+          UCSF.Library.search({q: terms, async: true}, success, failure);
+        } else {
+          // one big fat honkin' update (or else six separate AJAX calls), boo!
+          $.getJSON( 'http://apis.ucsf.edu/library/search', {q: terms}, function (cols) {
+            console.log(cols);
+            for (var i=0, l=cols.length; i<l; i++) {
+              console.log('foo');
+              success(cols[i]);
+            }
+          }).fail(failure);
+        }
       };
 
     $('.search-form').each(function (index, elem) {

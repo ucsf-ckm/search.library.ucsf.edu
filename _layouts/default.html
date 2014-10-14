@@ -117,42 +117,44 @@
     </div>
   </div> 
 
-  <script src="https://apis.ucsf.edu/jsapi?library"></script>
-  <script>  
-    var getHours = function () {
-      var failure = function () {
-      };
+  <!--[if !IE]> -->
+    <script src="https://apis.ucsf.edu/jsapi?library"></script>
+    <script>  
+      var getHours = function () {
+        var failure = function () {
+        };
 
-      var success = function (result) {
-        var prependHours = function (id, label, className) {
-          var hours = locations[id];
-          if (hours) {
-            var hoursText = hours[0].text.replace(/[^\w\s:-]/,'');
-            var li = $('<li>').append(label + ': ' + hoursText);
-            if (className) {
-              li.addClass(className);
+        var success = function (result) {
+          var prependHours = function (id, label, className) {
+            var hours = locations[id];
+            if (hours) {
+              var hoursText = hours[0].text.replace(/[^\w\s:-]/,'');
+              var li = $('<li>').append(label + ': ' + hoursText);
+              if (className) {
+                li.addClass(className);
+              }
+              $('#header-hours ul').prepend(li);
             }
-            $('#header-hours ul').prepend(li);
+          };
+
+          var locations = result.locations;
+          if (locations) {
+            prependHours('missionBay', 'MB Library', 'show-for-large-up');
+            prependHours('parnassus', 'Parnassus', 'show-for-medium-up');
+            $('#header-hours ul').prepend('<li class="show-for-medium-up">Today:</li>');
           }
         };
 
-        var locations = result.locations;
-        if (locations) {
-          prependHours('missionBay', 'MB Library', 'show-for-large-up');
-          prependHours('parnassus', 'Parnassus', 'show-for-medium-up');
-          $('#header-hours ul').prepend('<li class="show-for-medium-up">Today:</li>');
-        }
+        UCSF.Library.hours({}, success, failure);
       };
 
-      UCSF.Library.hours({}, success, failure);
-    };
-
-    if (window.addEventListener) {
-      window.addEventListener('load', getHours, false);
-    } else if (window.attachEvent) {
-      window.attachEvent('onload', getHours);
-    }
-  </script>
+      if (window.addEventListener) {
+        window.addEventListener('load', getHours, false);
+      } else if (window.attachEvent) {
+        window.attachEvent('onload', getHours);
+      }
+    </script>
+  <!-- <![endif]-->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
