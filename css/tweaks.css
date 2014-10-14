@@ -11,6 +11,11 @@ input[type="search"] {
   font-size: 1rem;
 }
 
+.top-bar .has-dropdown > a {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .search-bar {
   background-color: #ad4200;
   margin-bottom: 1em;
