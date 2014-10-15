@@ -154,7 +154,7 @@ layout: default
       window.location.hash = encodeURIComponent(terms);
       if (typeof EventSource !== "undefined") {
         // asynchronous updates, woo hoo!
-        UCSF.Library.search({q: terms, async: true}, success, failure);
+        UCSF.Library.search({q: terms.toLowerCase(), async: true}, success, failure);
       } else {
         // no server-sent events, so six separate AJAX calls, boo!
         var cols = ['dbs', 'sfx', 'millennium', 'pubmed', 'libguides', 'drupal6'];
