@@ -55,3 +55,10 @@ border: 1px solid #DDDCDC;
 border-bottom: 1px solid #DDDCDC;
 border-top: 1px solid transparent;
 }
+
+/* more white space around library logo */
+h1 a img {
+border: none;
+height: 50px;
+margin: 6px 0 10px 0px;
+}
