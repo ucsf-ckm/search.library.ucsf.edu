@@ -4,6 +4,16 @@
     	height: 15em;
     	overflow-y: auto;
 	}
+
+  .top-bar .name h1 a {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 64.063em) {
+  .top-bar-section li:not(.has-form) a:not(.button) {
+    padding-left: 9px;
+  }
 }
 
 /* iOS Safari zooms on search box focus without this */
@@ -14,14 +24,6 @@ input[type="search"] {
 .top-bar .has-dropdown > a {
   text-transform: uppercase;
   font-weight: bold;
-}
-
-.top-bar .name h1 a {
-  padding: 0;
-}
-
-.top-bar-section li:not(.has-form) a:not(.button) {
-  padding-left: 9px;
 }
 
 .search-bar {
