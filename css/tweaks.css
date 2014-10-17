@@ -48,7 +48,6 @@ div.extra-info ul li a {
 line-height: 40px;
 }
 
-.top-bar-section .divider, .top-bar-section [role="separator"] {
+.top-bar-section .dropdown {
 border: 1px solid #DDDCDC;
-border-top: 1px solid transparent;
 }
