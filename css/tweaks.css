@@ -45,3 +45,17 @@ div.extra-info ul li a {
   border-top: 1px #ccc solid;
 }
 
+/* adjust height and borders of menu dropdowns */
+.dropdown li:not(.has-form) a:not(.button) {
+line-height: 40px;
+}
+
+.top-bar-section .dropdown {
+border: 1px solid #DDDCDC;
+}
+.top-bar-section .divider, .top-bar-section [role="separator"] {
+border-bottom: 1px solid #DDDCDC;
+border-top: 1px solid transparent;
+}
+
+
