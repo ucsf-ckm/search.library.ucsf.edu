@@ -58,8 +58,8 @@ border-bottom: 1px solid #DDDCDC;
 border-top: 1px solid transparent;
 }
 
-/* experiementa; change font for H1 -- if approved change globally in .scss file */
-.top-bar .has-dropdown > a {
+/* experiementa; change font for main nav -- if approved change globally in .scss file */
+.top-bar .has-dropdown {
    font-size: 1.46em;
    line-height: 4em;
    margin-bottom: 25px;
