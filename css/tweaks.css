@@ -59,7 +59,7 @@ border-top: 1px solid transparent;
 }
 
 /* experiementa; change font for H1 -- if approved change globally in .scss file */
-h1 {
+.top-bar .has-dropdown > a {
    font-size: 1.46em;
    line-height: 4em;
    margin-bottom: 25px;
