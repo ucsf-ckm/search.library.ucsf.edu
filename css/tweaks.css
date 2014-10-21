@@ -59,7 +59,7 @@ border-top: 1px solid transparent;
 }
 
 /* experiemental change font for main nav -- if approved change globally in .scss file */
-.top-bar-section ul li>a {
+.top-bar .has-dropdown > a {
    font-size: 1.46em;
    line-height: 4em;
    margin-bottom: 25px;
