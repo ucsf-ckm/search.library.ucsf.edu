@@ -62,4 +62,13 @@ border-bottom: 1px solid #DDDCDC;
 border-top: 1px solid transparent;
 }
 
+/* experiemental change font for main nav -- if approved change globally in .scss file */
+.top-bar .has-dropdown > a {
+   font-size: 1em;
+   line-height: 4em;
+   font-family: "Roboto Condensed";
+   font-weight: 700;
+   font-style: normal;
+   text-transform: uppercase;
+}
 
