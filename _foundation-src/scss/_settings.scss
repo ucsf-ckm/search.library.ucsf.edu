@@ -1432,7 +1432,7 @@ $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: 
 
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
-// $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+$topbar-arrows: false; //Set false to remove the triangle icon from the menu item
 
 // 36. Visibility Classes
 // - - - - - - - - - - - - - - - - - - - - - - - - -

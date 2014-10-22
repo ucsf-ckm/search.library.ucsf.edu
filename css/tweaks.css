@@ -16,6 +16,10 @@
   }
 }
 
+.name img {
+  max-height: 50px;
+}
+
 /* iOS Safari zooms on search box focus without this */
 input[type="search"] {
   font-size: 1rem;
