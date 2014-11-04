@@ -36,9 +36,13 @@ input[type="search"] {
 }
 
 div.extra-info {
-  height: 1.5em;
+  height: 2em;
   background-color: #2571a1;
   color: #fff;
+}
+
+div.extra-info ul {
+  line-height: 2;
 }
 
 div.extra-info ul li a {
