@@ -128,23 +128,22 @@
         };
 
         var success = function (result) {
-          var prependHours = function (id, label, className) {
+          var prependHours = function (id, label, className, url) {
             var hours = locations[id];
             if (hours) {
               var hoursText = hours[0].text.replace(/[^\w\s:-]/,'');
-              var li = $('<li>').append(label + ': ' + hoursText);
-              if (className) {
-                li.addClass(className);
-              }
+              var a = $('<a>').attr('href', url).append(label + ': ' + hoursText);
+              var li = $('<li>').append(a);
+              li.addClass(className);
               $('#header-hours ul').prepend(li);
             }
           };
 
           var locations = result.locations;
           if (locations) {
-            prependHours('missionBayHub', 'MB Hub', 'show-for-large-up');
-            prependHours('missionBay', 'MB Library', 'show-for-large-up');
-            prependHours('parnassus', 'Parnassus', 'show-for-medium-up');
+            prependHours('missionBayHub', 'MB Hub', 'show-for-large-up', 'http://www.library.ucsf.edu/visit/missionhall');
+            prependHours('missionBay', 'MB Library', 'show-for-large-up', 'http://www.library.ucsf.edu/visit/missionbay');
+            prependHours('parnassus', 'Parnassus', 'show-for-medium-up', 'http://www.library.ucsf.edu/visit/parnassus');
             $('#header-hours ul').prepend('<li class="show-for-medium-up"><a href="http://www.library.ucsf.edu/visit/hours">Today:</a></li>');
           }
         };
