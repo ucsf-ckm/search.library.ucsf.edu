@@ -68,3 +68,9 @@ border: 1px solid #DDDCDC;
 border-bottom: 1px solid #DDDCDC;
 border-top: 1px solid transparent;
 }
+
+
+/* add padding to right of results icons */
+img.left {
+  padding-right; .25em;
+}
