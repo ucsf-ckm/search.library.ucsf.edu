@@ -83,6 +83,6 @@ border-top: 1px solid transparent;
 
 
 /* add padding to right of results icons */
-img.left {
+.row.results-row img.left {
   padding-right; .25em;
 }
