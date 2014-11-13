@@ -53,7 +53,7 @@ div.extra-info ul li a {
 }
 
 .extra-info .hours ul li:last-child a {
-    position:relative; 
+    position:relative;
     padding-left:1.5em;
 }
 
@@ -79,4 +79,10 @@ border: 1px solid #DDDCDC;
 .top-bar-section .divider, .top-bar-section [role="separator"] {
 border-bottom: 1px solid #DDDCDC;
 border-top: 1px solid transparent;
+}
+
+
+/* add padding to right of results icons */
+.row.results-row img.left {
+  padding-right; .25em;
 }
