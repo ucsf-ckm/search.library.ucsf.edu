@@ -53,8 +53,8 @@ div.extra-info ul li a {
 }
 
 .extra-info .hours ul li:last-child a {
-    position:relative;
-    padding-left:1.5em;
+  position:relative;
+  padding-left:1.5em;
 }
 
 .extra-info img {
@@ -70,19 +70,19 @@ div.extra-info ul li a {
 
 /* adjust height and borders of menu dropdowns */
 .dropdown li:not(.has-form) a:not(.button) {
-line-height: 40px;
+  line-height: 40px;
 }
 
 .top-bar-section .dropdown {
-border: 1px solid #DDDCDC;
+  border: 1px solid #DDDCDC;
 }
 .top-bar-section .divider, .top-bar-section [role="separator"] {
-border-bottom: 1px solid #DDDCDC;
-border-top: 1px solid transparent;
+  border-bottom: 1px solid #DDDCDC;
+  border-top: 1px solid transparent;
 }
 
 
 /* add padding to right of results icons */
-.row.results-row img.left {
-  padding-right; .25em;
+.results-row .left {
+  padding: 0 .25em;
 }
