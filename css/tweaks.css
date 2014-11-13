@@ -83,6 +83,6 @@ div.extra-info ul li a {
 
 
 /* add padding to right of results icons */
-.results-row .left {
-  padding: 0 .25em;
+.results-row svg {
+  margin: 0 .25em;
 }
