@@ -81,8 +81,11 @@ div.extra-info ul li a {
   border-top: 1px solid transparent;
 }
 
-
 /* add padding to right of results icons */
 .results-row svg {
   margin-right: .25em;
+}
+
+a.all-results:hover {
+  color: white;
 }
