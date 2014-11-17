@@ -33,23 +33,21 @@ input[type="search"] {
 .search-bar {
   background-color: #ad4200;
   margin-bottom: 1em;
-  border-radius: 0em;
 }
 
 input.search-terms {
-border-radius: .3em 0em 0em .3em;
+  border-radius: .3em 0 0 .3em;
 }
 
 input.button.postfix
 {
-border-radius: 0em .3em .3em 0em;
+  border-radius: 0 .3em .3em 0;
 }
 
 div.extra-info {
   height: 2em;
   background-color: #2571a1;
   color: #fff;
-  border-radius: 0em;
   margin-bottom: 3px;
 }
 
@@ -80,10 +78,6 @@ div.extra-info ul li a {
 /* adjust height and borders of menu dropdowns */
 .dropdown li:not(.has-form) a:not(.button) {
   line-height: 40px;
-}
-
-.top-bar {
-padding-bottom: 4.5em;
 }
 
 .top-bar-section .dropdown {
