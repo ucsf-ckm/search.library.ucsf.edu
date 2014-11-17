@@ -82,6 +82,10 @@ div.extra-info ul li a {
   line-height: 40px;
 }
 
+.top-bar {
+padding-bottom: 4.5em;
+}
+
 .top-bar-section .dropdown {
   border: 1px solid #DDDCDC;
 }
