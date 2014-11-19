@@ -93,6 +93,6 @@ div.extra-info ul li a {
   margin-right: .25em;
 }
 
-a.all-results:hover {
+a.all-results:hover, a.all-results:focus {
   color: white;
 }
