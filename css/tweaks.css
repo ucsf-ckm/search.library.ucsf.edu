@@ -66,6 +66,7 @@ div.extra-info ul li a {
 
 .extra-info img {
   max-height: 1.5em;
+  max-width: 1.5em;
   position: absolute;
   left: 0;
   top: 0.25em;
