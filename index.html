@@ -147,6 +147,10 @@ layout: default
         if (l) {
           for (var i=0; i<l; i++) {
             if (typeof results.data[i].url === "string" && results.data[i].url.match(urlRegExp)) {
+              // Our Drupal 6 instance returns &amp; a lot. Until we upgrade or fix it somehow, this...
+              if (results.name === "drupal6" && typeof results.data[i].name === "string") {
+                results.data[i].name = results.data[i].name.replace(/&amp;/g, '&');
+              }
               li = $('<li>');
               a = $('<a>')
                 .attr('href', results.data[i].url)
