@@ -5,8 +5,6 @@ layout: default
   <div data-alert id="didyoumean" class="row hide">
   </div>
   <div class="row results-row">
-
-
     <div class="large-4 columns">
       <div class="panel radius">
         <span id="all-millennium" class="hide">
@@ -111,7 +109,7 @@ layout: default
   <script>
   $(document).ready(function () {
     var showSuggestedTerms = function (suggestedTerms) {
-      if (suggestedTerms) {
+      if (suggestedTerms && ('"' + suggestedTerms + '"' !== document.querySelector('.search-terms').value)) {
         var termsLink = $('<a>')
           .attr('href', '#' + suggestedTerms);
         termsLink.append(
