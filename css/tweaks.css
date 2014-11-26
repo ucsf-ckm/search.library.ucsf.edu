@@ -94,6 +94,6 @@ div.extra-info ul li a {
   margin-right: .25em;
 }
 
-a.all-results:hover, a.all-results:focus {
+a.results-button:hover, a.results-button:focus {
   color: white;
 }
