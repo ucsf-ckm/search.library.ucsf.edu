@@ -239,7 +239,9 @@ layout: default
 
     var hashChangeHandler = function () {
       $('title').text('UCSF Library Search: ' + decodeURIComponent(window.location.hash.substring(1)));
-      ga('send', 'pageview');
+      ga('send', 'pageview', {
+        'page': location.pathname + location.search  + location.hash
+      });
       runSearchWithHashValue();
     };
 
