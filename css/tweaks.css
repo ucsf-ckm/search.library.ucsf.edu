@@ -97,3 +97,8 @@ div.extra-info ul li a {
 a.results-button:hover, a.results-button:focus {
   color: white;
 }
+
+/* capitalize results from sfx */
+#sfx {
+  text-transform:capitalize;
+}
