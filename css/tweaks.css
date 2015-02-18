@@ -1,5 +1,5 @@
 /* Keep results boxes all the same height when they are 3-across */
-@media only screen and (min-width: 64.063em) {
+@media only screen and (min-width: 40.063em) {
 	.results-list {
     	height: 15em;
     	overflow-y: auto;
