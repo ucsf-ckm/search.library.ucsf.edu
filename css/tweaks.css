@@ -31,7 +31,7 @@ input[type="search"] {
 }
 
 .search-bar {
-  background-color: #ad4200;
+  background-color: #f26d04;
   margin-bottom: 1em;
 }
 
@@ -46,7 +46,7 @@ input.button.postfix
 
 div.extra-info {
   height: 2em;
-  background-color: #2571a1;
+  background-color: #052049;
   color: #fff;
   margin-bottom: 3px;
 }
@@ -76,6 +76,10 @@ div.extra-info ul li a {
   border-top: 1px #ccc solid;
 }
 
+.footer .inline-list {
+  margin-top: 1rem;
+}
+
 /* adjust height and borders of menu dropdowns */
 .dropdown li:not(.has-form) a:not(.button) {
   line-height: 40px;
@@ -98,7 +102,38 @@ a.results-button:hover, a.results-button:focus {
   color: white;
 }
 
+/* Fix button-label colors */
+.label, .button.postfix {
+  background-color: #052049;
+}
+
 /* capitalize results from sfx */
 #sfx {
   text-transform:capitalize;
+}
+
+/* footer feedback */
+#feedback-link {
+   background-color: #007cbe ;
+   color: #fff;
+   padding: 0px 8px;
+   -moz-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border-radius: 3px;
+   
+}
+
+#feedback-link:hover {
+    cursor:pointer;
+    background-color:#052429 ;
+}
+
+/* OMG hover state for buttons */
+.button:hover, .results-button:hover {
+  background-color: #007cbe;
+}
+
+/* did-you-mean box border color */
+.alert-box.info {
+  border-color: #9ba6b6;
 }
