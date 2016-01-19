@@ -189,8 +189,8 @@ layout: default
           if (results.name !== "drupal6" && typeof results.url === "string" && results.url.match(urlRegExp)) {
             // Staging only
             if (results.url.indexOf('https://ucsf.idm.oclc.org/login?qurl=') === 0) {
-              results.url = results.data[i].url.replace('https://ucsf.idm.oclc.org/login?qurl=','');
-              results.url = decodeURIComponent(results.data[i].url);
+              results.url = results.url.replace('https://ucsf.idm.oclc.org/login?qurl=','');
+              results.url = decodeURIComponent(results.url);
             }
             // End staging only
             all.children('a').attr('href', results.url).show();
