@@ -38,17 +38,19 @@ layout: default
 
     <div class="medium-4 columns">
       <div class="panel radius">
-        <span id="all-dbs" class="hide">
-          <a href="#" target="_blank" class="round label right results-button">All Results</a>
-        </span>
-        <span id="advanced-dbs" class="hide">
-          <a href="http://www.library.ucsf.edu/db" target="_blank" class="round label right results-button">Advanced Search</a>
+        <span>
+          <a id="springshareaz-results-button" href="http://guides.ucsf.edu/az.php" target="_blank" class="round label right results-button-nohide">Advanced Search</a>
         </span>
         <svg class="left" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
           <path fill="#2571A1" d="M35.977 15.604l-12.656-3.39-2.214-8.265c-.186-.69-.925-1.094-1.653-.9L4.025 7.185c-.727.194-1.166.913-.983 1.603l5.49 20.488c.185.69.924 1.094 1.65.897l6.142-1.646-.838 3.125c-.185.692.253 1.41.98 1.605l13.788 3.694c.728.192 1.467-.208 1.65-.9l5.053-18.845c.186-.688-.252-1.407-.98-1.6zm-30.2-6.43l13.31-3.562 4.928 18.39-13.31 3.563-4.927-18.39zm23.877 25.217L18.07 31.224l.91-3.406 6.63-1.776c.73-.194 1.17-.91.983-1.603L24.03 14.87l10.108 2.774-4.484 16.747z"/>
         </svg><p><strong>Database Titles</strong></p>
-        <div class="results-list" id="dbs">
-        </div>
+        <script src="//lgapi.libapps.com/sa.php?site_id=407"></script><script>
+springshare_widget_config_1464716455166 = { path: 'assets' };
+</script>
+<div class="results-list" id="s-lg-widget-1464716455166"></div>
+<script>var springshareaz = function(d,s,id,term){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://lgapi.libapps.com/widgets.php?site_id=407&widget_type=2&search_terms="+encodeURIComponent(term)+"&search_match=2&subject_ids=&sort_by=best_bets&list_format=1&drop_text=Select+a+Database...&output_format=1&load_type=2&enable_description=0&widget_title=A-Z+Database+List&widget_height=250&widget_width=100%25&widget_link_color=2954d1&widget_embed_type=1&num_results=5&enable_more_results=1&window_target=1&config_id=1464716455166";
+  fjs.parentNode.insertBefore(js,fjs);}};
+  </script>
       </div>
     </div>
   </div>
@@ -79,13 +81,6 @@ layout: default
       </div>
     </div>
   </div>
-
-  <!-- if IE8 or less, give up and redirect to legacy QuickSearch -->
-  <!--[if lt IE 9]>
-    <script>
-      window.location = 'http://www.library.ucsf.edu/quicksearch/' + encodeURIComponent(decodeURIComponent(window.location.hash.substring(1)));
-    </script>
-  <![endif]-->
 
   <script src="/js/vendor/jquery.js"></script>
   <script src="/js/foundation.min.js"></script>
@@ -204,8 +199,8 @@ layout: default
         // asynchronous updates, woo hoo!
         UCSF.Library.search({q: terms.toLowerCase(), async: true}, success, failure);
       } else {
-        // no server-sent events, so six separate AJAX calls, boo!
-        var cols = ['dbs', 'sfx', 'millennium', 'pubmed', 'drupal6'];
+        // no server-sent events, so separate AJAX calls, boo!
+        var cols = ['sfx', 'millennium', 'pubmed', 'drupal6'];
         for (var i=0, l=cols.length; i<l; i++) {
           $.getJSON( 'http://apis.ucsf.edu/library/search', {q: terms, c:[cols[i]]}, function (col) {
             success(col[0]);
@@ -213,6 +208,10 @@ layout: default
             .fail(failure);
         }
       }
+      var id = 's-lg-widget-script-1464716455166';
+      $('#' + id).remove();
+      springshareaz(document,"script",id,terms);
+      $('#springshareaz-results-button').attr('href', 'http://guides.ucsf.edu/az.php?q=' + encodeURIComponent(terms));
     };
 
     $('.search-form').each(function (index, elem) {

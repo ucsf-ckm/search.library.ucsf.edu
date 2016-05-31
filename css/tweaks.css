@@ -98,7 +98,8 @@ div.extra-info ul li a {
   margin-right: .25em;
 }
 
-a.results-button:hover, a.results-button:focus {
+a.results-button:hover, a.results-button:focus,
+a.results-button-nohide:hover, a.results-button-nohide:focus {
   color: white;
 }
 
@@ -129,7 +130,7 @@ a.results-button:hover, a.results-button:focus {
 }
 
 /* OMG hover state for buttons */
-.button:hover, .results-button:hover {
+.button:hover, .results-button:hover, .results-button-nohide:hover {
   background-color: #007cbe;
 }
 
@@ -214,3 +215,12 @@ body {
 }
 
 /* UCSF Banner ends */
+
+/* Springshare widget overrides */
+.results-list ul {
+  list-style: decimal;
+}
+
+.s-lg-widget-list-more-results {
+  display: none;
+}
