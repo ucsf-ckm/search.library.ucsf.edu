@@ -220,7 +220,3 @@ body {
 .results-list ul {
   list-style: decimal;
 }
-
-.s-lg-widget-list-more-results {
-  display: none;
-}
