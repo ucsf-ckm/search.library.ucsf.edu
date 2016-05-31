@@ -153,12 +153,6 @@ layout: default
                 results.data[i].name = results.data[i].name.replace(/&amp;/g, '&');
               }
               li = $('<li>');
-              // Staging only
-              if (results.data[i].url.indexOf('https://ucsf.idm.oclc.org/login?qurl=') === 0) {
-                results.data[i].url = results.data[i].url.replace('https://ucsf.idm.oclc.org/login?qurl=','');
-                results.data[i].url = decodeURIComponent(results.data[i].url);
-              }
-              // End staging only
               a = $('<a>')
                 .attr('href', results.data[i].url)
                 .attr('target', '_blank')
@@ -173,12 +167,6 @@ layout: default
             }
           }
           if (results.name !== "drupal6" && typeof results.url === "string" && results.url.match(urlRegExp)) {
-            // Staging only
-            if (results.url.indexOf('https://ucsf.idm.oclc.org/login?qurl=') === 0) {
-              results.url = results.url.replace('https://ucsf.idm.oclc.org/login?qurl=','');
-              results.url = decodeURIComponent(results.url);
-            }
-            // End staging only
             all.children('a').attr('href', results.url).show();
             all.show();
           } else {
