@@ -1,11 +1,10 @@
 {
   "name": "search.library.ucsf.edu",
   "version": "1.0.1",
-  "description": "search.library.ucsf.edu =======================",
+  "description": "Search demo/playground for the UCSF Library",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd _foundation-src && bundle exec compass compile"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
