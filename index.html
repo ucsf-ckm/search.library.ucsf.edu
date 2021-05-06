@@ -135,7 +135,7 @@
       const terms = encodeURIComponent(this.querySelector('.search-terms').value);
       window.location.hash = terms
 
-      const helpCenterUrl = new URL(`https://ucsflibrary.zendesk.com/api/v2/help_center/articles/search?query=${terms}`);
+      const helpCenterUrl = new URL(`https://ucsflibrary.zendesk.com/api/v2/help_center/articles/search?per_page=10&query=${terms}`);
       fetch(helpCenterUrl)
         .then(response => response.json())
         .then(data => { data.name = 'help-center'; return success(data); });

@@ -1,8 +1,8 @@
 /* Keep results boxes all the same height when they are 3-across */
 @media only screen and (min-width: 40.063em) {
 	.results-list {
-    	height: 15em;
-    	overflow-y: auto;
+    height: 20em;
+    overflow-y: auto;
 	}
 
   .top-bar .name h1 a {
